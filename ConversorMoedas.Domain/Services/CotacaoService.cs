@@ -1,15 +1,10 @@
 ﻿using ConversorMoedas.Common.Enums;
 using ConversorMoedas.Domain.Entities;
 using ConversorMoedas.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConversorMoedas.Domain.Services
 {
-    public class CotacaoService
+    public class CotacaoService : ICotacaoService
     {
         private Cotacao _cotacao;
         private readonly ICambioService _cambioService;

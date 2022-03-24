@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversorMoedas.Domain", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversorMoedas.Common", "ConversorMoedas.Common\ConversorMoedas.Common.csproj", "{9BBA8278-5254-4623-A131-15913A01E7AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorMoedas.Repository", "ConversorMoedas.Repository\ConversorMoedas.Repository.csproj", "{1C529977-7805-417F-A3E6-17D02E90C67B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversorMoedas.Repository", "ConversorMoedas.Repository\ConversorMoedas.Repository.csproj", "{1C529977-7805-417F-A3E6-17D02E90C67B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorMoedas.Services", "ConversorMoedas.Services\ConversorMoedas.Services.csproj", "{926F46A0-6A02-49CD-A855-31B252454486}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversorMoedas.Services", "ConversorMoedas.Services\ConversorMoedas.Services.csproj", "{926F46A0-6A02-49CD-A855-31B252454486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Autenticacao", "..\..\API Autenticação\Api.Autenticacao\Api.Autenticacao.csproj", "{9781E567-54E7-443C-801A-486C091867F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{926F46A0-6A02-49CD-A855-31B252454486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926F46A0-6A02-49CD-A855-31B252454486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926F46A0-6A02-49CD-A855-31B252454486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9781E567-54E7-443C-801A-486C091867F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9781E567-54E7-443C-801A-486C091867F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9781E567-54E7-443C-801A-486C091867F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9781E567-54E7-443C-801A-486C091867F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
