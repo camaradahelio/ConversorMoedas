@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversorMoedas.Repository"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversorMoedas.Services", "ConversorMoedas.Services\ConversorMoedas.Services.csproj", "{926F46A0-6A02-49CD-A855-31B252454486}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Autenticacao", "..\..\API Autenticação\Api.Autenticacao\Api.Autenticacao.csproj", "{9781E567-54E7-443C-801A-486C091867F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Autenticacao", "Api.Autenticacao\Api.Autenticacao.csproj", "{74BB01A6-3247-47D3-B9AB-A55439B22829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{926F46A0-6A02-49CD-A855-31B252454486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926F46A0-6A02-49CD-A855-31B252454486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926F46A0-6A02-49CD-A855-31B252454486}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9781E567-54E7-443C-801A-486C091867F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9781E567-54E7-443C-801A-486C091867F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9781E567-54E7-443C-801A-486C091867F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9781E567-54E7-443C-801A-486C091867F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BB01A6-3247-47D3-B9AB-A55439B22829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BB01A6-3247-47D3-B9AB-A55439B22829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BB01A6-3247-47D3-B9AB-A55439B22829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BB01A6-3247-47D3-B9AB-A55439B22829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
