@@ -18,11 +18,13 @@ namespace ConversorMoedas.Api.Controllers
 
         [HttpPost]
         [ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
-        public async IActionResult Converter(CotacaoModel model)
+        public async Task<IActionResult> Converter(CotacaoModel model)
         {
-            await _cotacaoService.Iniciar();
+            _cotacaoService.Iniciar(Guid.NewGuid());
 
-            return Ok(valor);
+            var valorConvertido = await _cotacaoService.Converter(model.MoedaOriginal, model.MoedaDestino, model.Valor);
+
+            return Ok(valorConvertido);
         }
     }
 }
