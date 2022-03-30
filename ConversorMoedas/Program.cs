@@ -28,7 +28,7 @@ builder.Services.AddSingleton<ExchangeRatesApiSettings>();
 
 builder.Services.AddScoped<HttpClient>();
 
-//builder.Services.AddMongoConfiguration(builder.Configuration);
+builder.Services.AddMongoConfiguration(builder.Configuration);
 builder.Services.AddApiConfiguration(builder.Configuration);
 
 var appSettings = appsettingsSection.Get<AppSettings>();

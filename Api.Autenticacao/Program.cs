@@ -41,7 +41,7 @@ builder.Services.AddSwaggerGen(options =>
             Name = "Hélio Dutra",
             Url = new Uri("https://github.com/camaradahelio")
         }
-    });    
+    });
 });
 
 var app = builder.Build();
@@ -56,5 +56,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints => 
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

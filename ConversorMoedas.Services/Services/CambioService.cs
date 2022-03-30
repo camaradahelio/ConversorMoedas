@@ -2,6 +2,7 @@
 using ConversorMoedas.Domain.Interfaces;
 using ConversorMoedas.Services.Data;
 using ConversorMoedas.Services.Settings;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,11 @@ namespace ConversorMoedas.Services.Services
         private readonly HttpClient _httpClient;
         private readonly ExchangeRatesApiSettings _exchangeRatesApiSettings;
 
-        public CambioService(HttpClient httpClient, ExchangeRatesApiSettings exchangeRatesApiSettings)
+        public CambioService(HttpClient httpClient, IOptions<ExchangeRatesApiSettings> exchangeRatesApiSettings) 
         {
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri(exchangeRatesApiSettings.Url);
-            _exchangeRatesApiSettings = exchangeRatesApiSettings;
+            _httpClient.BaseAddress = new Uri(exchangeRatesApiSettings.Value.Url);
+            _exchangeRatesApiSettings = exchangeRatesApiSettings.Value;
         }
 
         public async Task<TaxaCambio> ObterTaxas()

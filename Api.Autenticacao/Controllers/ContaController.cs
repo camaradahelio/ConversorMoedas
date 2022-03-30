@@ -55,7 +55,7 @@ namespace Api.Autenticacao.Controllers
 
             if (resultado.Succeeded)
             {
-                return Ok(registrarUsuarioModel);
+                return Ok(this.GerarJwtToken());
             }
             else
             {
@@ -87,7 +87,7 @@ namespace Api.Autenticacao.Controllers
             }
         }
 
-        public string GerarJwtToken()
+        private string GerarJwtToken()
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var chave = Encoding.ASCII.GetBytes(_appSettings.Chave);

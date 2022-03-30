@@ -1,4 +1,5 @@
 ﻿using ConversorMoedas.Repository.Settings;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace ConversorMoedas.Repository.Context
     public class ConnectionFactory : IConnectionFactory
     {
         private readonly MongoSettings _mongoSettings;
-        public ConnectionFactory(MongoSettings mongoSettings)
+        public ConnectionFactory(IOptions<MongoSettings> mongoSettings)
         {
-            _mongoSettings = mongoSettings;
+            _mongoSettings = mongoSettings.Value;
         }
 
         public IMongoDatabase GetDatabase()

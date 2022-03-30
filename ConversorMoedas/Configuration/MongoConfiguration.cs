@@ -9,11 +9,8 @@ namespace ConversorMoedas.Api.Configuration
     {
         public static IServiceCollection AddMongoConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<MongoSettings>(config => 
-            {
-                config.ConnectionString = configuration["MongoDb:ConnectionString"];
-                config.DatabaseName = configuration["MongoDb:DatabaseName"];
-            });
+            var mongoDbsettingSection = configuration.GetSection("MongoSettings");
+            services.Configure<MongoSettings>(mongoDbsettingSection);
 
             services.AddScoped<IConnectionFactory, ConnectionFactory>();
             services.AddScoped<ICotacaoRepository, CotacaoRepository>();
