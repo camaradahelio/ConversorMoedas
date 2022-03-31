@@ -61,7 +61,7 @@ namespace ConversorMoedas.Domain.Services
             this._cotacao.ValorOrigem = valor;
             this._cotacao.ValorDestino = valorConvertido;
 
-            return valorConvertido;
+            return decimal.Round(valorConvertido, 2);
         }
 
         public async Task<Guid> SalvarCotacao()

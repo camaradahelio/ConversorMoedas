@@ -29,7 +29,13 @@ namespace ConversorMoedas.Services.Services
             var response = await _httpClient.GetAsync($"latest?access_key={_exchangeRatesApiSettings.Key}&base=EUR&symbols=BRL,USD,JPY");
             response.EnsureSuccessStatusCode();
             string resultJson = await response.Content.ReadAsStringAsync();
-            ExchangeRateData exchangeRateData = JsonSerializer.Deserialize<ExchangeRateData>(resultJson);
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            ExchangeRateData exchangeRateData = JsonSerializer.Deserialize<ExchangeRateData>(resultJson, options);
 
             if (exchangeRateData.Success)
             {

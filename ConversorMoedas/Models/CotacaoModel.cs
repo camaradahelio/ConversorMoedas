@@ -6,9 +6,11 @@ namespace ConversorMoedas.Api.Models
     public class CotacaoModel
     {
         [Required]
+        [EnumDataType(typeof(Moeda))]
         public Moeda MoedaOriginal { get; set; }
 
         [Required]
+        [EnumDataType(typeof(Moeda))]
         public Moeda MoedaDestino { get; set; }
 
         [Required]

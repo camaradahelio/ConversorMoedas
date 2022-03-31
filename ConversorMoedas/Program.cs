@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +53,10 @@ var chave = Encoding.ASCII.GetBytes(appSettings.Chave);
 //    };
 //});
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -60,6 +64,10 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options => 
 {
+    options.UseInlineDefinitionsForEnums();
+
+    options.DescribeAllParametersInCamelCase();
+
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo 
     {
         Title = "Conversor de moedas V1",
