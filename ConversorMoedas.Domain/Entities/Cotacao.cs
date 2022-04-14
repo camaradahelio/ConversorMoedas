@@ -6,7 +6,6 @@ namespace ConversorMoedas.Domain.Entities
     public class Cotacao : IEntity
     {
         public Guid Id { get; internal set; }
-        public Guid UsuarioId { get; internal set; }
         public Moeda MoedaOrigem { get; internal set; }
         public Moeda MoedaDestino { get; internal set; }
         public decimal ValorOrigem { get; internal set; }
@@ -14,10 +13,9 @@ namespace ConversorMoedas.Domain.Entities
         public string OperacaoPorExtenso { get; internal set; }
         public DateTime DataOperacao { get; internal set; }
 
-        public Cotacao(Guid usuarioId)
+        public Cotacao()
         {
             Id = Guid.NewGuid();
-            UsuarioId = usuarioId;
         }        
     }
 }

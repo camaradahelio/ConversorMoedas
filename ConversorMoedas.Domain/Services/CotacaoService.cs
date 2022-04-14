@@ -14,11 +14,7 @@ namespace ConversorMoedas.Domain.Services
         {
             _cambioService = cambioService;
             _cotacaoRepository = cotacaoRepository;
-        }
-
-        public void Iniciar(Guid usuarioId)
-        {
-            this._cotacao = new Cotacao(usuarioId);
+            _cotacao = new Cotacao();
         }
 
         private decimal Converter(decimal valor, double taxa)

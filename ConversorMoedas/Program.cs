@@ -17,10 +17,9 @@ builder.Host.ConfigureAppConfiguration((hostContext, config) =>
         .AddJsonFile("appsettings.json", false, true)
         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
         .AddEnvironmentVariables();
-});
 
-var appsettingsSection = builder.Configuration.GetSection("AppSettings");
-builder.Services.Configure<AppSettings>(appsettingsSection);
+    config.AddUserSecrets<Program>();
+});
 
 var exchangerateapi = builder.Configuration.GetSection("ExchangeRatesApi");
 builder.Services.Configure<ExchangeRatesApiSettings>(exchangerateapi);
@@ -31,27 +30,6 @@ builder.Services.AddScoped<HttpClient>();
 
 builder.Services.AddMongoConfiguration(builder.Configuration);
 builder.Services.AddApiConfiguration(builder.Configuration);
-
-var appSettings = appsettingsSection.Get<AppSettings>();
-var chave = Encoding.ASCII.GetBytes(appSettings.Chave);
-
-//builder.Services.AddAuthentication(c => 
-//{
-//    c.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    c.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
-//}).AddJwtBearer(j => 
-//{
-//    j.RequireHttpsMetadata = true;
-//    j.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(chave),
-//        ValidateIssuer = true,
-//        ValidateAudience = true,
-//        ValidAudience = appSettings.ValidoEm,
-//        ValidIssuer = appSettings.Emissor
-//    };
-//});
 
 builder.Services.AddControllers().AddJsonOptions(options => 
 {
@@ -79,31 +57,6 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://github.com/camaradahelio")
         }
     });
-
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Bearer",
-        Description = "Autenticação JWT",
-        In = ParameterLocation.Header,
-        Scheme = "Bearer",
-        Type = SecuritySchemeType.ApiKey
-    });
-
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string [] { }
-        }
-    });
-
 });
 
 var app = builder.Build();
@@ -119,7 +72,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-//app.UseAuthentication();
 
 app.UseRouting();
 

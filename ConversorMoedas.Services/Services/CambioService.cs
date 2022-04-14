@@ -27,29 +27,37 @@ namespace ConversorMoedas.Services.Services
         public async Task<TaxaCambio> ObterTaxas()
         {
             var response = await _httpClient.GetAsync($"latest?access_key={_exchangeRatesApiSettings.Key}&base=EUR&symbols=BRL,USD,JPY");
-            response.EnsureSuccessStatusCode();
-            string resultJson = await response.Content.ReadAsStringAsync();
 
-            var options = new JsonSerializerOptions
+            if (response.IsSuccessStatusCode)
             {
-                PropertyNameCaseInsensitive = true
-            };
+                response.EnsureSuccessStatusCode();
+                string resultJson = await response.Content.ReadAsStringAsync();
 
-            ExchangeRateData exchangeRateData = JsonSerializer.Deserialize<ExchangeRateData>(resultJson, options);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
 
-            if (exchangeRateData.Success)
-            {
-                TaxaCambio taxaCambio = new TaxaCambio();
-                taxaCambio.BRL = exchangeRateData.Rates.BRL;
-                taxaCambio.USD = exchangeRateData.Rates.USD;
-                taxaCambio.JPY = exchangeRateData.Rates.JPY;
+                ExchangeRateData exchangeRateData = JsonSerializer.Deserialize<ExchangeRateData>(resultJson, options);
 
-                return taxaCambio;
+                if (exchangeRateData.Success)
+                {
+                    TaxaCambio taxaCambio = new TaxaCambio();
+                    taxaCambio.BRL = exchangeRateData.Rates.BRL;
+                    taxaCambio.USD = exchangeRateData.Rates.USD;
+                    taxaCambio.JPY = exchangeRateData.Rates.JPY;
+
+                    return taxaCambio;
+                }
+                else
+                {
+                    throw new Exception($"Exchangeratesapi Erro: {exchangeRateData.error.code} - {exchangeRateData.error.info}");
+                }
             }
             else
             {
-                throw new Exception($"Exchangeratesapi Erro: {exchangeRateData.error.code} - {exchangeRateData.error.info}");
-            }                
+                throw new Exception($"Erro ao chamar api externa de conversão de moedas.");
+            }
         }
     }
 }
