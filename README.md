@@ -6,7 +6,7 @@ São suportadas quatro tipos de moedas BRL(Real Brasileiro) , USD (Dólar Americ
 A API através de outra API(rs) "Exchangeratesapi" obtem as taxas de conversão e tem como base o EUR (Euro) no plano de uso gratuito, não é possivel até o momento com a conta gratuita pegar as taxas tendo o BRL (Real Brasileiro) como base, por exemplo. Então para fazer a conversão de BRL (Real Brasileiro) para USD (Dólar Americano) primeiro faz a conversão do valor em BRL (Real Brasileiro) para EUR (EURO) e depois de EUR (EURO) para USD (Dólar Americano).
 
 # Tecnologias envolvidas
- - .NET 5, ASP.NET Core API
+ - .NET 6, ASP.NET Core API
  - MongoDB
  - Swagger
  - Docker
