@@ -10,7 +10,6 @@ A API através de outra API(rs) "Exchangeratesapi" obtem as taxas de conversão 
  - MongoDB
  - Swagger
  - Docker
- - JWT
 
 # Autenticação
 API também tem um mecanismo de autenticação de usuário. 
